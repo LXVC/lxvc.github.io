@@ -1,7 +1,7 @@
 ---
 title: Python 中 is 和 == 的区别
 date: 2017-01-26 16:23:02
-tags: Python
+tags: [Python, 后端]
 ---
 
 我们经常会遇到判断两个变量是否相等的情况，而在 Python 中判断变量是否相等有两种方式：
