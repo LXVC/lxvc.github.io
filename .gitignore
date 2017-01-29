@@ -6,3 +6,4 @@ node_modules/
 public/
 .deploy*/
 firebase-debug.log
+.vscode
