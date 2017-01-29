@@ -58,7 +58,7 @@ tags: [Python, 后端]
   id(foo) # 4496750728
   id(bar) # 4496750728
   foo == bar # True
-  foo is bar # False
+  foo is bar # True
 ```
 所以，到这里可以得出我们最后的结论了：
 

@@ -22,7 +22,6 @@ tags: [go, 后端]
 
   func setNameByPoint(student *Student, name string)  {
     student.name = name
-    println(student.name)
   }
 
   student := Student{"lx"}
