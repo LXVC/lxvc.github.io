@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="Python 中 is 和 == 的区别"/>
+
+
+
+
+  <meta name="keywords" content="Python,后端," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lxvc">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/01/26/Python中is和-的区别/"/>
+
+
+<meta name="description" content="我们经常会遇到判断两个变量是否相等的情况，而在 Python 中判断变量是否相等有两种方式：is 和 ==，到底我们应该使用哪一种呢？看完这篇文章你就能清楚地知道到底该使用哪一种了">
+<meta name="keywords" content="Python,后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 中 is 和 == 的区别">
+<meta property="og:url" content="http://yoursite.com/2017/01/26/Python中is和-的区别/index.html">
+<meta property="og:site_name" content="lxvc">
+<meta property="og:description" content="我们经常会遇到判断两个变量是否相等的情况，而在 Python 中判断变量是否相等有两种方式：is 和 ==，到底我们应该使用哪一种呢？看完这篇文章你就能清楚地知道到底该使用哪一种了">
+<meta property="og:updated_time" content="2017-02-01T07:10:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python 中 is 和 == 的区别">
+<meta name="twitter:description" content="我们经常会遇到判断两个变量是否相等的情况，而在 Python 中判断变量是否相等有两种方式：is 和 ==，到底我们应该使用哪一种呢？看完这篇文章你就能清楚地知道到底该使用哪一种了">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> Python 中 is 和 == 的区别 · lxvc </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">lxvc</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            关于
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">lxvc</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      
+      <a class="mobile-menu-item" href="/">
+        首页
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/archives/">
+        归档
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/about">
+        关于
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          Python 中 is 和 == 的区别
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年1月26日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        <p>我们经常会遇到判断两个变量是否相等的情况，而在 Python 中判断变量是否相等有两种方式：<br><code>is</code> 和 <code>==</code>，到底我们应该使用哪一种呢？看完这篇文章你就能清楚地知道到底该使用哪一种了</p>
+<a id="more"></a>
+<p>先看这一段代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">foo = <span class="string">'foo'</span></div><div class="line">bar = <span class="string">'foo'</span></div><div class="line">foo == bar <span class="comment"># True</span></div><div class="line">foo <span class="keyword">is</span> bar <span class="comment"># True</span></div><div class="line"></div><div class="line">foo = <span class="number">3</span></div><div class="line">bar = <span class="number">3</span></div><div class="line">foo == bar <span class="comment"># True</span></div><div class="line">foo <span class="keyword">is</span> bar <span class="comment"># True</span></div></pre></td></tr></table></figure>
+<p>似乎没什么区别啊，那是不是说 <code>is</code> 和 <code>==</code> 是等价的，用哪种看个人喜好？当然不是，请看下面这个例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">foo = [<span class="string">'foo'</span>]</div><div class="line">bar = [<span class="string">'foo'</span>]</div><div class="line">foo == bar <span class="comment"># True</span></div><div class="line">foo <span class="keyword">is</span> bar <span class="comment"># False</span></div><div class="line"></div><div class="line">foo = &#123;<span class="string">'foo'</span>: <span class="string">'bar'</span>&#125;</div><div class="line">bar = &#123;<span class="string">'foo'</span>: <span class="string">'bar'</span>&#125;</div><div class="line">foo == bar <span class="comment"># True</span></div><div class="line">foo <span class="keyword">is</span> bar <span class="comment"># False</span></div></pre></td></tr></table></figure>
+<p>为什么这里 <code>is</code> 和 <code>==</code> 会得到截然相反的结果？看最后一个例子：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">foo = <span class="string">'foo'</span></div><div class="line">bar = foo</div><div class="line">foo = <span class="string">'bar'</span></div><div class="line">print(foo) <span class="comment"># bar</span></div><div class="line">print(bar) <span class="comment"># foo</span></div><div class="line">id(foo) <span class="comment"># 4497499672</span></div><div class="line">id(bar) <span class="comment"># 4496800208</span></div><div class="line">foo == bar <span class="comment"># False</span></div><div class="line">foo <span class="keyword">is</span> bar <span class="comment"># False</span></div><div class="line"></div><div class="line">foo = [<span class="string">'foo'</span>]</div><div class="line">bar = foo</div><div class="line">foo[<span class="number">0</span>] = <span class="string">'bar'</span></div><div class="line">print(foo) <span class="comment"># ['bar']</span></div><div class="line">print(bar) <span class="comment"># ['bar']</span></div><div class="line">id(foo) <span class="comment"># 4496750728</span></div><div class="line">id(bar) <span class="comment"># 4496750728</span></div><div class="line">foo == bar <span class="comment"># True</span></div><div class="line">foo <span class="keyword">is</span> bar <span class="comment"># True</span></div></pre></td></tr></table></figure>
+<p>所以，到这里可以得出我们最后的结论了：</p>
+<blockquote>
+<p><code>is</code> 实质上是对变量进行 <code>id()</code> 求值后的返回值比较，在对<strong>值类型</strong>的变量进行比较时用 <code>is</code> 还是 <code>==</code>，没有区别；在对<strong>对象实例</strong>进行比较时，如果需要判断两个变量是否是<strong>同一个实例的引用</strong>，用 <code>is</code>，如果需要判断两个对象实例变量的值是否完全相等，用 <code>==</code>。特别的：如果 <code>a == b</code> 为 <code>True</code>，<code>a is b</code> 不一定为 <code>True</code>；如果 <code>a is b</code> 为 <code>True</code>，则 <code>a == b</code> 一定为 <code>True</code></p>
+</blockquote>
+<p>2016-02-01更新：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">nan = float(<span class="string">'NaN'</span>)</div><div class="line">nan_copy = nan</div><div class="line">nan_copy == nan <span class="comment"># False</span></div><div class="line">nan_copy <span class="keyword">is</span> nan <span class="comment"># True</span></div></pre></td></tr></table></figure></p>
+<p>这个特例不符合上面得出的结论</p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/Python/">Python</a>
+          
+            <a href="/tags/后端/">后端</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/01/27/go语言中方法调用是值传递还是引用传递？/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">go 语言中方法调用是值传递还是引用传递？</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/01/20/hello-world/">
+        <span class="next-text nav-default">Hello World</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:justqzw@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/LXVC" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/liu-xia-vc/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">lxvc</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+
+  </body>
+</html>

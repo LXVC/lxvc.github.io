@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="go 语言中方法调用是值传递还是引用传递？"/>
+
+
+
+
+  <meta name="keywords" content="后端,go," />
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lxvc">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/01/27/go语言中方法调用是值传递还是引用传递？/"/>
+
+
+<meta name="description" content="我们先定义一个叫Student的结构体如下： 123type Student struct &amp;#123;  name string&amp;#125;">
+<meta name="keywords" content="后端,go">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go 语言中方法调用是值传递还是引用传递？">
+<meta property="og:url" content="http://yoursite.com/2017/01/27/go语言中方法调用是值传递还是引用传递？/index.html">
+<meta property="og:site_name" content="lxvc">
+<meta property="og:description" content="我们先定义一个叫Student的结构体如下： 123type Student struct &amp;#123;  name string&amp;#125;">
+<meta property="og:updated_time" content="2017-01-29T10:30:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="go 语言中方法调用是值传递还是引用传递？">
+<meta name="twitter:description" content="我们先定义一个叫Student的结构体如下： 123type Student struct &amp;#123;  name string&amp;#125;">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+
+
+
+  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css" />
+
+
+
+
+  
+
+
+
+    <title> go 语言中方法调用是值传递还是引用传递？ · lxvc </title>
+  </head>
+
+  <body>
+    <div class="container">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">lxvc</a>
+</div>
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/">
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/about">
+            关于
+          </a>
+        </li>
+      
+      
+    </ul>
+  
+</nav>
+
+<div class="mobile-navbar">
+  <div class="mobile-header">
+    <div class="mobile-header-logo">
+      <a href="/." class="logo">lxvc</a>
+    </div>
+
+    <div class="mobile-header-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  <nav class="mobile-menu">
+    
+      
+      <a class="mobile-menu-item" href="/">
+        首页
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/archives/">
+        归档
+      </a>
+    
+      
+      <a class="mobile-menu-item" href="/about">
+        关于
+      </a>
+    
+  </nav>
+</div>
+      </header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content">
+            
+  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          go 语言中方法调用是值传递还是引用传递？
+        
+      </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2017年1月27日
+        </span>
+      </div>
+    </header>
+
+    
+
+    <div class="post-content">
+      
+        <p>我们先定义一个叫<code>Student</code>的结构体如下：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</div><div class="line">  name <span class="keyword">string</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在看方法调用之前，我们先看一下 go 语言中的函数是怎么调用结构体参数的：</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setNameByValue</span><span class="params">(student Student, name <span class="keyword">string</span>)</span></span>  &#123;</div><div class="line">  student.name = name</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setNameByPoint</span><span class="params">(student *Student, name <span class="keyword">string</span>)</span></span>  &#123;</div><div class="line">  student.name = name</div><div class="line">&#125;</div><div class="line"></div><div class="line">student := Student&#123;<span class="string">"lx"</span>&#125;</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// lx</span></div><div class="line"></div><div class="line">setNameByValue(student, <span class="string">"vc"</span>)</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// lx</span></div><div class="line"></div><div class="line">setNameByPoint(&amp;student, <span class="string">"vc"</span>)</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// vc</span></div></pre></td></tr></table></figure>
+<p>从上面这段代码中我们可以看到：<code>要想改变结构体的某个字段，就必须给函数传递结构体指针，也就是传递引用</code></p>
+<p>如果这么这样调用函数会怎样？</p>
+<figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">setNameByValue(*student, <span class="string">"vc"</span>)</div><div class="line">setNameByPoint(student, <span class="string">"vc"</span>)</div></pre></td></tr></table></figure>
+<p>会编译报参数不符的错误：<code>cannot use student (type Student) as type Student(*Student) in argument to setNameByPoint</code>，也就是说：<strong>给函数传递的参数必须符合函数定义时对参数的要求</strong></p>
+<p>既然传递的是指针，那么 <code>setNameByPoint</code> 应该写成：<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">setNameByPoint</span><span class="params">(student *Student, name <span class="keyword">string</span>)</span></span>  &#123;</div><div class="line">  (*student).name = name</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其实这是对的，上面那种写法也是对的，这是因为 Golang 的编译器在底层做了优化，它知道传进来的一定是一个指针（不是指针就会编译报错），所以在函数内部使用时即使没有加<code>*</code>号，它也知道这是一个指针变量</p>
+<p>清楚了 Golang 的函数调用规则之后我们再来看方法调用，在 Golang 中方法也不过就是有接受者（receiver）的函数而已，给<code>Student</code>定义下面两个方法：<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(student Student)</span> <span class="title">setNameByValue</span><span class="params">(name <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">  student.name = name</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="params">(student *Student)</span> <span class="title">setNameByPoint</span><span class="params">(name <span class="keyword">string</span>)</span></span> &#123;</div><div class="line">  student.name = name</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>接着再分别调用它们：<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">student := Student&#123;<span class="string">"lx"</span>&#125;</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// lx</span></div><div class="line"></div><div class="line">student.setNameByValue(<span class="string">"vc"</span>)</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// lx</span></div><div class="line"></div><div class="line">(&amp;student).setNameByPoint(<span class="string">"vc"</span>)</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// vc</span></div></pre></td></tr></table></figure></p>
+<p>符合预期，我们再用错误的参数来调用看看会不会报错：<br><figure class="highlight golang"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">(&amp;student).setNameByValue(<span class="string">"vc"</span>)</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// lx</span></div><div class="line"></div><div class="line">student.setNameByPoint(<span class="string">"vc"</span>)</div><div class="line"><span class="built_in">println</span>(student.name) <span class="comment">// vc</span></div></pre></td></tr></table></figure></p>
+<p>没有报错，并且：我明明是给<code>setNameByValue</code>方法传递的指针（引用），为什么<code>student.name</code>没有改变；给<code>setNameByPoint</code>传递的是值，<code>student.name</code>却改变了？</p>
+<blockquote>
+<p>原来，结构体调用方法不区别是值调用还是指针调用，在调用时再把调用者转换为方法定义时的接受者（receiver）类型，所以，<strong>方法调用是传递值还是传递引用只看这个方法定义的<code>接受者</code>是值类型还是指针类型</strong></p>
+</blockquote>
+<p>思考：在大多数语言中，方法都是传递引用的，而且还没有提供值传递的语法，Golang 两种都支持，并且两者在调用时并没有语法上的区别，我也没有看到值传递时有特别的好处（避免错误地修改了不想改的字段？），所以，为了和其它语言统一，我一般全部使用指针类型定义方法，再使用值类型去调用它们。这样在语法上更统一，也更简洁</p>
+
+      
+    </div>
+
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/后端/">后端</a>
+          
+            <a href="/tags/go/">go</a>
+          
+        </div>
+
+        
+  <nav class="post-nav">
+    
+      <a class="prev" href="/2017/04/09/rem的适用场景兼谈前端的各种常用单位/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">rem 的适用场景兼谈前端的各种常用单位</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    
+    
+      <a class="next" href="/2017/01/26/Python中is和-的区别/">
+        <span class="next-text nav-default">Python 中 is 和 == 的区别</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    
+  </nav>
+
+      </footer>
+    
+  </article>
+
+
+          </div>
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+        </div>  
+      </main>
+
+      <footer id="footer" class="footer">
+  <div class="social-links">
+    
+      
+        
+          <a href="mailto:justqzw@gmail.com" class="iconfont icon-email" title="email"></a>
+        
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        
+          <a href="https://github.com/LXVC" class="iconfont icon-github" title="github"></a>
+        
+      
+    
+      
+    
+      
+        
+          <a href="https://www.zhihu.com/people/liu-xia-vc/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+        
+      
+    
+    
+    
+  </div>
+
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    
+    &copy; 
+    
+    2017
+
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">lxvc</span>
+  </span>
+</div>
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+
+    
+
+
+    
+  
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+
+  </body>
+</html>
