@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
-    <meta charset="UTF-8"/>
+    
+<meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+
+
+
 
 
 
@@ -22,23 +34,11 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
 
 
 
-<link rel="canonical" href="http://yoursite.com/tags/前端/"/>
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="lxvc">
-<meta property="og:url" content="http://yoursite.com/tags/前端/index.html">
-<meta property="og:site_name" content="lxvc">
-<meta property="og:locale" content="zh-cn">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lxvc">
-
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+<link rel="canonical" href="http://lxvc.github.io/tags/前端/"/>
 
 
 
@@ -47,9 +47,43 @@
 
 
 
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
   
 
 
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"lxvc","subtitle":null,"description":null,"author":"lxvc","language":"en","timezone":"Asia/Shanghai","url":"http://lxvc.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":5,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:LXVC/lxvc.github.io.git","branch":"master"},"ignore":[],"archive_generator":{"per_page":5,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":5},"index_generator":{"per_page":5,"order_by":"-date"},"tag_generator":{"per_page":5},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2017,"favicon":"/favicon.ico","rss":false,"menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"dark violet","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"justqzw@gmail.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/lxvc","weibo":"https://weibo.com/2908392393","zhihu":"https://www.zhihu.com/people/liu-xia-vc","douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
 
     <title>
   
@@ -58,73 +92,108 @@
 </title>
   </head>
 
-  <body>
-    <div class="container">
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">lxvc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            About
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
       <header id="header" class="header"><div class="logo-wrapper">
   <a href="/." class="logo">lxvc</a>
 </div>
 
-<nav class="site-nav">
+<nav class="site-navbar">
   
     <ul id="menu" class="menu">
       
-        
         <li class="menu-item">
           <a class="menu-item-link" href="/">
-            首页
+            
+            
+              Home
+            
           </a>
         </li>
       
-        
         <li class="menu-item">
           <a class="menu-item-link" href="/archives/">
-            归档
+            
+            
+              Archives
+            
           </a>
         </li>
       
-        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
         <li class="menu-item">
           <a class="menu-item-link" href="/about">
-            关于
+            
+            
+              About
+            
           </a>
         </li>
-      
       
     </ul>
   
 </nav>
 
-<div class="mobile-navbar">
-  <div class="mobile-header">
-    <div class="mobile-header-logo">
-      <a href="/." class="logo">lxvc</a>
-    </div>
-
-    <div class="mobile-header-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <nav class="mobile-menu">
-    
-      
-      <a class="mobile-menu-item" href="/">
-        首页
-      </a>
-    
-      
-      <a class="mobile-menu-item" href="/archives/">
-        归档
-      </a>
-    
-      
-      <a class="mobile-menu-item" href="/about">
-        关于
-      </a>
-    
-  </nav>
-</div>
       </header>
 
       <main id="main" class="main">
@@ -132,6 +201,9 @@
           <div id="content" class="content">
             
   
+  
+  
+
   <section id="archive" class="archive">
     
       
@@ -143,7 +215,7 @@
 
     
       
-      
+
       <div class="archive-post">
         <span class="archive-post-time">
           
@@ -167,12 +239,15 @@
 
 
 
+
           </div>
           
-        </div>  
+
+        </div>
       </main>
 
       <footer id="footer" class="footer">
+
   <div class="social-links">
     
       
@@ -188,35 +263,48 @@
       
     
       
+    
+      
+    
+      
         
-          <a href="https://github.com/LXVC" class="iconfont icon-github" title="github"></a>
+          <a href="https://github.com/lxvc" class="iconfont icon-github" title="github"></a>
         
       
     
       
         
-          <a href="https://www.weibo.com/2908392393" class="iconfont icon-weibo" title="weibo"></a>
+          <a href="https://weibo.com/2908392393" class="iconfont icon-weibo" title="weibo"></a>
         
       
     
       
         
-          <a href="https://www.zhihu.com/people/liu-xia-vc/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+          <a href="https://www.zhihu.com/people/liu-xia-vc" class="iconfont icon-zhihu" title="zhihu"></a>
         
       
     
+      
     
+      
+    
+      
+    
+      
+    
+
     
   </div>
 
 
+
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
   </span>
-  
+  <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -234,6 +322,7 @@
     <span class="author">lxvc</span>
   </span>
 </div>
+
       </footer>
 
       <div class="back-to-top" id="back-to-top">
@@ -242,6 +331,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
@@ -249,18 +343,35 @@
 
 
 
+  
+  
+
+
+
 
 
   
-    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
   
 
   
     <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
 
   </body>
 </html>

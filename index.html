@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
   <head>
-    <meta charset="UTF-8"/>
+    
+<meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 
 <meta http-equiv="Cache-Control" content="no-transform" />
 <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+
+
+
+
 
 
 
@@ -22,23 +34,11 @@
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.1.0" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.10.1" />
 
 
 
-<link rel="canonical" href="http://yoursite.com/"/>
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="lxvc">
-<meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="lxvc">
-<meta property="og:locale" content="zh-cn">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="lxvc">
-
-
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.1.0" />
+<link rel="canonical" href="http://lxvc.github.io/"/>
 
 
 
@@ -47,89 +47,160 @@
 
 
 
+  <link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css" />
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.10.1" />
+
+
+
   
 
 
+
+  <script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+
+
+
+
+
+
+<script>
+  window.config = {"title":"lxvc","subtitle":null,"description":null,"author":"lxvc","language":"en","timezone":"Asia/Shanghai","url":"http://lxvc.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":5,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:LXVC/lxvc.github.io.git","branch":"master"},"ignore":[],"archive_generator":{"per_page":5,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":5},"index_generator":{"per_page":5,"order_by":"-date"},"tag_generator":{"per_page":5},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2017,"favicon":"/favicon.ico","rss":false,"menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"dark violet","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"justqzw@gmail.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/lxvc","weibo":"https://weibo.com/2908392393","zhihu":"https://www.zhihu.com/people/liu-xia-vc","douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
+</script>
 
     <title> lxvc </title>
   </head>
 
-  <body>
-    <div class="container">
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">lxvc</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    
+      <a href="/">
+        <li class="mobile-menu-item">
+          
+          
+            Home
+          
+        </li>
+      </a>
+    
+      <a href="/archives/">
+        <li class="mobile-menu-item">
+          
+          
+            Archives
+          
+        </li>
+      </a>
+    
+      <a href="/tags">
+        <li class="mobile-menu-item">
+          
+          
+            Tags
+          
+        </li>
+      </a>
+    
+      <a href="/about">
+        <li class="mobile-menu-item">
+          
+          
+            About
+          
+        </li>
+      </a>
+    
+  </ul>
+</nav>
+
+    <div class="container" id="mobile-panel">
       <header id="header" class="header"><div class="logo-wrapper">
   <a href="/." class="logo">lxvc</a>
 </div>
 
-<nav class="site-nav">
+<nav class="site-navbar">
   
     <ul id="menu" class="menu">
       
-        
         <li class="menu-item">
           <a class="menu-item-link" href="/">
-            首页
+            
+            
+              Home
+            
           </a>
         </li>
       
-        
         <li class="menu-item">
           <a class="menu-item-link" href="/archives/">
-            归档
+            
+            
+              Archives
+            
           </a>
         </li>
       
-        
+        <li class="menu-item">
+          <a class="menu-item-link" href="/tags">
+            
+            
+              Tags
+            
+          </a>
+        </li>
+      
         <li class="menu-item">
           <a class="menu-item-link" href="/about">
-            关于
+            
+            
+              About
+            
           </a>
         </li>
-      
       
     </ul>
   
 </nav>
 
-<div class="mobile-navbar">
-  <div class="mobile-header">
-    <div class="mobile-header-logo">
-      <a href="/." class="logo">lxvc</a>
-    </div>
-
-    <div class="mobile-header-icon">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-  <nav class="mobile-menu">
-    
-      
-      <a class="mobile-menu-item" href="/">
-        首页
-      </a>
-    
-      
-      <a class="mobile-menu-item" href="/archives/">
-        归档
-      </a>
-    
-      
-      <a class="mobile-menu-item" href="/about">
-        关于
-      </a>
-    
-  </nav>
-</div>
       </header>
 
       <main id="main" class="main">
         <div class="content-wrapper">
           <div id="content" class="content">
             
+  
   <section id="posts" class="posts">
     
       
+        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
@@ -140,15 +211,20 @@
 
       <div class="post-meta">
         <span class="post-time">
-          2018年9月13日
+          2018-09-13
         </span>
+        
+        
       </div>
     </header>
 
     
+    
+
 
     <div class="post-content">
       
+        
         
 
         
@@ -158,10 +234,13 @@
     </div>
 
     
-  </article>
 
     
+
+  </article>
+
       
+        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
@@ -172,28 +251,41 @@
 
       <div class="post-meta">
         <span class="post-time">
-          2018年9月8日
+          2018-09-08
         </span>
+        
+        
       </div>
     </header>
 
     
+    
+
 
     <div class="post-content">
       
         
+        
+          
+        
 
         
-          <h1 id="是的"><a href="#是的" class="headerlink" title="是的"></a>是的</h1>
+          <p>从一个登录功能的报错说起。</p>
+          <div class="read-more">
+            <a href="/2018/09/08/你无法永远预测用户将会如何使用你的产品/" class="read-more-link">Read more..</a>
+          </div>
         
       
     </div>
 
     
-  </article>
 
     
+
+  </article>
+
       
+        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
@@ -204,15 +296,20 @@
 
       <div class="post-meta">
         <span class="post-time">
-          2018年9月6日
+          2018-09-06
         </span>
+        
+        
       </div>
     </header>
 
     
+    
+
 
     <div class="post-content">
       
+        
         
           
         
@@ -220,17 +317,20 @@
         
           <p>大家都知道，JavaScript 是一门弱类型动态语言，运行期间才会去做数据类型的检查。一定程度上，这会给我们的项目带来很多不确定性，但是凡事有利有弊，善于利用它的动态性特点也能给我带来相当的便利，写出很多骚操作~<br>
           <div class="read-more">
-            <a href="/2018/09/06/谈一谈apply、call、bind/" class="read-more-link">阅读更多</a>
+            <a href="/2018/09/06/谈一谈apply、call、bind/" class="read-more-link">Read more..</a>
           </div>
         
       
     </div>
 
     
-  </article>
 
     
+
+  </article>
+
       
+        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
@@ -241,33 +341,41 @@
 
       <div class="post-meta">
         <span class="post-time">
-          2017年5月9日
+          2017-05-09
         </span>
+        
+        
       </div>
     </header>
 
     
+    
+
 
     <div class="post-content">
       
+        
         
           
         
 
         
-          <p>我是一个比较喜欢用新版的人，手机、电脑、APP 都尽量保持最新的版本，不更新浑身不舒服。<br>这样能带来两个好处：<br>
+          <p>我是一个比较喜欢用新版的人，手机系统、电脑系统、APP 都尽量保持最新的版本，不更新浑身不舒服。<br>这样能带来两个好处：<br>
           <div class="read-more">
-            <a href="/2017/05/09/推荐两个npm依赖升级工具/" class="read-more-link">阅读更多</a>
+            <a href="/2017/05/09/推荐两个npm依赖升级工具/" class="read-more-link">Read more..</a>
           </div>
         
       
     </div>
 
     
-  </article>
 
     
+
+  </article>
+
       
+        
   <article class="post">
     <header class="post-header">
       <h1 class="post-title">
@@ -278,192 +386,58 @@
 
       <div class="post-meta">
         <span class="post-time">
-          2017年4月27日
+          2017-04-27
         </span>
+        
+        
       </div>
     </header>
 
     
+    
+
 
     <div class="post-content">
       
         
-
-        
-          <p>大家都知道，JavaScript 是一门弱类型动态语言，运行期间才会去做数据类型的检查。一定程度上，这会给我们的项目带来很多不确定性，但是凡事有利有弊，善于利用它的动态性特点也能给我带来相当的便利，写出很多骚操作~<br>
-          <div class="read-more">
-            <a href="/2017/04/27/如何在亚马逊S3上部署单页面应用/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/04/26/不依赖后端的纯前端文件下载/">不依赖后端的纯前端文件下载</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年4月26日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
         
 
-        
-          <p>大家都知道，JavaScript 是一门弱类型动态语言，运行期间才会去做数据类型的检查。一定程度上，这会给我们的项目带来很多不确定性，但是凡事有利有弊，善于利用它的动态性特点也能给我带来相当的便利，写出很多骚操作~<br>
-          <div class="read-more">
-            <a href="/2017/04/26/不依赖后端的纯前端文件下载/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/01/27/go语言中方法调用是值传递还是引用传递？/">go 语言中方法调用是值传递还是引用传递？</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年1月27日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
         
           
         
-
-        
-          <p>我们先定义一个叫<code>Student</code>的结构体如下：</p>
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Student <span class="keyword">struct</span> &#123;</span><br><span class="line">  name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-          <div class="read-more">
-            <a href="/2017/01/27/go语言中方法调用是值传递还是引用传递？/" class="read-more-link">阅读更多</a>
-          </div>
-        
       
     </div>
 
     
+
+    
+
   </article>
 
-    
       
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/01/26/Python中is和-的区别/">Python 中 is 和 == 的区别</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年1月26日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
       
-        
-          
-        
-
-        
-          <p>我们经常会遇到判断两个变量是否相等的情况，而在 Python 中判断变量是否相等有两种方式：<br><code>is</code> 和 <code>==</code>，到底我们应该使用哪一种呢？看完这篇文章你就能清楚地知道到底该使用哪一种了</p>
-          <div class="read-more">
-            <a href="/2017/01/26/Python中is和-的区别/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-      
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          <a class="post-link" href="/2017/01/20/hello-world/">Hello World</a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2017年1月20日
-        </span>
-      </div>
-    </header>
-
-    
-
-    <div class="post-content">
-      
-        
-          
-        
-
-        
-          <h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2>
-          <div class="read-more">
-            <a href="/2017/01/20/hello-world/" class="read-more-link">阅读更多</a>
-          </div>
-        
-      
-    </div>
-
-    
-  </article>
-
-    
-  </section>
-
-  
   <nav class="pagination">
     
+    
+      <a class="next" href="/page/2/">
+        <span class="next-text">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+    
+  </section>
+
           </div>
           
-        </div>  
+
+        </div>
       </main>
 
       <footer id="footer" class="footer">
+
   <div class="social-links">
     
       
@@ -479,35 +453,48 @@
       
     
       
+    
+      
+    
+      
         
-          <a href="https://github.com/LXVC" class="iconfont icon-github" title="github"></a>
+          <a href="https://github.com/lxvc" class="iconfont icon-github" title="github"></a>
         
       
     
       
         
-          <a href="https://www.weibo.com/2908392393" class="iconfont icon-weibo" title="weibo"></a>
+          <a href="https://weibo.com/2908392393" class="iconfont icon-weibo" title="weibo"></a>
         
       
     
       
         
-          <a href="https://www.zhihu.com/people/liu-xia-vc/activities" class="iconfont icon-zhihu" title="zhihu"></a>
+          <a href="https://www.zhihu.com/people/liu-xia-vc" class="iconfont icon-zhihu" title="zhihu"></a>
         
       
     
+      
     
+      
+    
+      
+    
+      
+    
+
     
   </div>
 
 
+
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a>
   </span>
-  
+  <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
@@ -525,6 +512,7 @@
     <span class="author">lxvc</span>
   </span>
 </div>
+
       </footer>
 
       <div class="back-to-top" id="back-to-top">
@@ -540,18 +528,35 @@
 
 
 
+  
+  
+
+
+
 
 
   
-    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
   
 
   
     <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
   
 
-    <script type="text/javascript" src="/js/src/even.js?v=2.1.0"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=2.1.0"></script>
+  
+    <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  
+
+  
+    <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  
+
+
+    <script type="text/javascript" src="/js/src/even.js?v=2.10.1"></script>
 
   </body>
 </html>
