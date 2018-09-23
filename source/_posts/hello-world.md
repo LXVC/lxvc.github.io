@@ -1,7 +1,10 @@
 ---
 title: Hello World
+tag: [Coding]
 ---
 
-## Hello World
+```JavaScript
+    console.log('Hello World')
+```
 
 <!-- more -->
