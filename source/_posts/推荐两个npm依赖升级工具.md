@@ -1,7 +1,7 @@
 ---
 title: 推荐两个 npm 依赖升级工具
 date: 2017-05-09 18:45:36
-tags: [JavaScript, 前端, Node]
+tags: [JavaScript, npm, Node]
 ---
 
 我是一个比较喜欢用新版的人，手机系统、电脑系统、APP 都尽量保持最新的版本，不更新浑身不舒服。
