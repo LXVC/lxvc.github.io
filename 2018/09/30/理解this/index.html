@@ -17,8 +17,12 @@
 
 
 
+  <meta name="description" content="理解 this"/>
 
 
+
+
+  <meta name="keywords" content="JavaScript, lxvc" />
 
 
 
@@ -38,7 +42,7 @@
 
 
 
-<link rel="canonical" href="http://lxvc.github.io/archives/2017/04/"/>
+<link rel="canonical" href="http://lxvc.github.io/2018/09/30/理解this/"/>
 
 
 
@@ -85,11 +89,7 @@
   window.config = {"title":"lxvc","subtitle":null,"description":null,"author":"lxvc","language":"en","timezone":"Asia/Shanghai","url":"http://lxvc.github.io","root":"/","permalink":":year/:month/:day/:title/","permalink_defaults":null,"source_dir":"source","public_dir":"public","tag_dir":"tags","archive_dir":"archives","category_dir":"categories","code_dir":"downloads/code","i18n_dir":":lang","skip_render":null,"new_post_name":":title.md","default_layout":"post","titlecase":false,"external_link":true,"filename_case":0,"render_drafts":false,"post_asset_folder":false,"relative_link":false,"future":true,"highlight":{"enable":true,"auto_detect":false,"line_number":true,"tab_replace":null,"first_line_number":"always1"},"default_category":"uncategorized","category_map":null,"tag_map":null,"date_format":"YYYY-MM-DD","time_format":"HH:mm:ss","per_page":5,"pagination_dir":"page","theme":"even","deploy":{"type":"git","repo":"git@github.com:LXVC/lxvc.github.io.git","branch":"master"},"ignore":[],"index_generator":{"per_page":5,"order_by":"-date"},"archive_generator":{"per_page":5,"yearly":true,"monthly":true,"daily":false},"category_generator":{"per_page":5},"tag_generator":{"per_page":5},"marked":{"gfm":true,"pedantic":false,"sanitize":false,"tables":true,"breaks":true,"smartLists":true,"smartypants":true,"modifyAnchors":"","autolink":true},"server":{"port":4000,"log":false,"compress":false,"header":true},"since":2017,"favicon":"/favicon.ico","rss":false,"menu":{"Home":"/","Archives":"/archives/","Tags":"/tags","About":"/about"},"color":"dark violet","mode":"default","toc":true,"fancybox":true,"pjax":true,"copyright":{"enable":true,"license":"<a rel=\"license\" href=\"http://creativecommons.org/licenses/by-nc/4.0/\" target=\"_blank\">知识共享署名-非商业性使用 4.0 国际许可协议</a>"},"reward":{"enable":false,"qrCode":{"wechat":null,"alipay":null}},"social":{"email":"justqzw@gmail.com","stack-overflow":null,"twitter":null,"facebook":null,"linkedin":null,"google":null,"github":"https://github.com/lxvc","weibo":"https://weibo.com/2908392393","zhihu":"https://www.zhihu.com/people/liu-xia-vc","douban":null,"pocket":null,"tumblr":null,"instagram":null},"leancloud":{"app_id":null,"app_key":null},"baidu_analytics":null,"baidu_verification":null,"google_analytics":null,"google_verification":null,"disqus_shortname":null,"changyan":{"appid":null,"appkey":null},"livere_datauid":null,"version":"2.10.1"};
 </script>
 
-    <title>
-  
-    Archives - lxvc
-  
-</title>
+    <title> 理解 this - lxvc </title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -201,79 +201,125 @@
           <div id="content" class="content">
             
   
-  
-  
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          理解 this
+        
+      </h1>
 
-  <section id="archive" class="archive">
-    
-      
-        <div class="archive-title">
-          <span class="archive-post-counter">
-            15 Posts In Total
-          </span>
-        </div>
-      
-    
-
-    
-      
+      <div class="post-meta">
+        <span class="post-time">
+          2018-09-30
+        </span>
         
         
+      </div>
+    </header>
 
+    
+    
+  <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">Contents</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-作为函数调用时"><span class="toc-text">1. 作为函数调用时</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-当作方法调用"><span class="toc-text">2. 当作方法调用</span></a></li></ol>
+    </div>
+  </div>
+
+
+
+    <div class="post-content">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>this 的指向问题在 JavaScript 中对初学者来说一直就像一个谜一样。</p>
+<p>在其他面向对象语言中，this 关键字只有在对象调用自身的属性或者方法时才会出现，此时 this 就是指向调用者的一个指针，这很符合直觉，但在 JavaScript 中就复杂很多。</p>
+<p>在我看来，JavaScript 中的 this 分为两大类：</p>
+<ol>
+<li>作为函数调用，指向宿主环境的全局对象</li>
+<li>当作方法调用，this 指向调用它的对象</li>
+</ol>
+<a id="more"></a>
+<h1 id="1-作为函数调用时"><a href="#1-作为函数调用时" class="headerlink" title="1. 作为函数调用时"></a>1. 作为函数调用时</h1><p>宿主环境就是指代码的执行环境，服务器端就是 Node，前端就是浏览器，以下代码都在浏览器中执行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayThis</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span> === <span class="built_in">window</span>)</span><br><span class="line">&#125;</span><br><span class="line">sayThis()    <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>一个普通函数的定义以及调用，this 指向 window</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.val = <span class="string">'window'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    val: <span class="string">'obj'</span>,</span><br><span class="line">    sayVal: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">function</span> _sayVal(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>.val)</span><br><span class="line">        &#125;</span><br><span class="line">        _sayVal()</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.val)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">obj.sayVal()</span><br><span class="line"><span class="comment">// window</span></span><br><span class="line"><span class="comment">// obj</span></span><br></pre></td></tr></table></figure>
+<p><code>_sayThis</code> 是定义在方法中的普通函数，函数体中 this 的指向还是 window</p>
+<p>我们换一种方式理解这种现象，window 本身就是一个对象，所有的全局变量都是 window 的一个属性或者方法，假如把普通函数看做 window 对象的一个方法，是不是就可以理解此时 this 的指向了？</p>
+<blockquote>
+<p>注意：在严格模式下，这种情况下的 this 是 undefined</p>
+</blockquote>
+<h1 id="2-当作方法调用"><a href="#2-当作方法调用" class="headerlink" title="2. 当作方法调用"></a>2. 当作方法调用</h1><p>在这种情况中，当分不清 this 的指向问题时，我认为关键在于没正确地辨别方法执行时谁是调用方。</p>
+
+      
+    </div>
+
+    
+      
+      
+
+  <div class="post-copyright">
+    <p class="copyright-item">
+      <span>Author: </span>
+      <a href="http://lxvc.github.io">lxvc</a>
+    </p>
+    <p class="copyright-item">
+      <span>Link: </span>
+      <a href="http://lxvc.github.io/2018/09/30/理解this/">http://lxvc.github.io/2018/09/30/理解this/</a>
+    </p>
+    <p class="copyright-item">
+      <span>License: </span>
+      
+      <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+
+
+
+      
+      
+    
+
+    
+      <footer class="post-footer">
         
-          
-          <div class="collection-title">
-            <h2 class="archive-year">2017</h2>
+          <div class="post-tags">
+            
+              <a href="/tags/JavaScript/">JavaScript</a>
+            
           </div>
         
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-27
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/04/27/如何在亚马逊S3上部署单页面应用/" class="archive-post-link">
-            如何优雅地在亚马逊 S3 上部署单页面（SPA）应用
-          </a>
-        </span>
-      </div>
-    
-      
         
         
-
-        
-      
-
-      <div class="archive-post">
-        <span class="archive-post-time">
-          
-            04-26
-          
-        </span>
-        <span class="archive-post-title">
-          <a href="/2017/04/26/不依赖后端的纯前端文件下载/" class="archive-post-link">
-            不依赖后端的纯前端文件下载
-          </a>
-        </span>
-      </div>
+  <nav class="post-nav">
     
-  </section>
-
-  
-  <nav class="pagination">
+      <a class="prev" href="/2018/10/04/TypeScript学习记录（一）/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">TypeScript 学习记录（一）</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
+    
+      <a class="next" href="/2018/09/27/谈一谈跨域问题/">
+        <span class="next-text nav-default">谈一谈跨域问题</span>
+        <span class="prev-text nav-mobile">Next</span>
+        <i class="iconfont icon-right"></i>
+      </a>
     
   </nav>
 
 
+      </footer>
+    
+
+  </article>
 
 
           </div>
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
       </main>
@@ -363,6 +409,11 @@
     </div>
 
     
+  
+  
+
+  
+
 
 
     
